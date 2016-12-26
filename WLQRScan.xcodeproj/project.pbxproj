@@ -23,6 +23,9 @@
 		8D70D55D1C45F1D000A03ED0 /* qrspec.c in Sources */ = {isa = PBXBuildFile; fileRef = 8D70D5531C45F1D000A03ED0 /* qrspec.c */; };
 		8D70D55E1C45F1D000A03ED0 /* rscode.c in Sources */ = {isa = PBXBuildFile; fileRef = 8D70D5551C45F1D000A03ED0 /* rscode.c */; };
 		8D70D55F1C45F1D000A03ED0 /* split.c in Sources */ = {isa = PBXBuildFile; fileRef = 8D70D5571C45F1D000A03ED0 /* split.c */; };
+		8DAFD1221E10E4E700DD8372 /* QRScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DAFD1211E10E4E700DD8372 /* QRScanViewController.m */; };
+		8DAFD1251E10E8DE00DD8372 /* QRScanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DAFD1241E10E8DE00DD8372 /* QRScanView.m */; };
+		8DAFD1271E10F76C00DD8372 /* noticeMusic.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8DAFD1261E10F76C00DD8372 /* noticeMusic.wav */; };
 		9E4155C8A3AF79659A432237 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 809EBB5B1658A0407E84BBA5 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +80,11 @@
 		8D70D5561C45F1D000A03ED0 /* rscode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rscode.h; sourceTree = "<group>"; };
 		8D70D5571C45F1D000A03ED0 /* split.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = split.c; sourceTree = "<group>"; };
 		8D70D5581C45F1D000A03ED0 /* split.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = split.h; sourceTree = "<group>"; };
+		8DAFD1201E10E4E700DD8372 /* QRScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRScanViewController.h; sourceTree = "<group>"; };
+		8DAFD1211E10E4E700DD8372 /* QRScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRScanViewController.m; sourceTree = "<group>"; };
+		8DAFD1231E10E8DE00DD8372 /* QRScanView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRScanView.h; sourceTree = "<group>"; };
+		8DAFD1241E10E8DE00DD8372 /* QRScanView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRScanView.m; sourceTree = "<group>"; };
+		8DAFD1261E10F76C00DD8372 /* noticeMusic.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = noticeMusic.wav; sourceTree = "<group>"; };
 		99C6D6F652AD3842A1B0C8B7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A3BC615D6BBC9C4D6EBC5344 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -146,8 +154,13 @@
 				8D70D5181C45EE2C00A03ED0 /* AppDelegate.m */,
 				8D70D51A1C45EE2C00A03ED0 /* ViewController.h */,
 				8D70D51B1C45EE2C00A03ED0 /* ViewController.m */,
+				8DAFD1201E10E4E700DD8372 /* QRScanViewController.h */,
+				8DAFD1211E10E4E700DD8372 /* QRScanViewController.m */,
+				8DAFD1231E10E8DE00DD8372 /* QRScanView.h */,
+				8DAFD1241E10E8DE00DD8372 /* QRScanView.m */,
 				8D70D5471C45F04700A03ED0 /* QRUtil.h */,
 				8D70D5481C45F04700A03ED0 /* QRUtil.m */,
+				8DAFD1261E10F76C00DD8372 /* noticeMusic.wav */,
 				8D70D51D1C45EE2C00A03ED0 /* Main.storyboard */,
 				8D70D5201C45EE2C00A03ED0 /* Assets.xcassets */,
 				8D70D5221C45EE2C00A03ED0 /* LaunchScreen.storyboard */,
@@ -282,6 +295,7 @@
 				TargetAttributes = {
 					8D70D5101C45EE2C00A03ED0 = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = 3V6U2AD8V4;
 					};
 					8D70D5291C45EE2C00A03ED0 = {
 						CreatedOnToolsVersion = 7.1;
@@ -320,6 +334,7 @@
 			files = (
 				8D70D5241C45EE2C00A03ED0 /* LaunchScreen.storyboard in Resources */,
 				8D70D5211C45EE2C00A03ED0 /* Assets.xcassets in Resources */,
+				8DAFD1271E10F76C00DD8372 /* noticeMusic.wav in Resources */,
 				8D70D51F1C45EE2C00A03ED0 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -397,10 +412,12 @@
 				8D70D55D1C45F1D000A03ED0 /* qrspec.c in Sources */,
 				8D70D5591C45F1D000A03ED0 /* bitstream.c in Sources */,
 				8D70D55E1C45F1D000A03ED0 /* rscode.c in Sources */,
+				8DAFD1251E10E8DE00DD8372 /* QRScanView.m in Sources */,
 				8D70D51C1C45EE2C00A03ED0 /* ViewController.m in Sources */,
 				8D70D55A1C45F1D000A03ED0 /* mask.c in Sources */,
 				8D70D55B1C45F1D000A03ED0 /* qrencode.c in Sources */,
 				8D70D55C1C45F1D000A03ED0 /* qrinput.c in Sources */,
+				8DAFD1221E10E4E700DD8372 /* QRScanViewController.m in Sources */,
 				8D70D55F1C45F1D000A03ED0 /* split.c in Sources */,
 				8D70D5191C45EE2C00A03ED0 /* AppDelegate.m in Sources */,
 				8D70D5161C45EE2C00A03ED0 /* main.m in Sources */,
@@ -543,6 +560,7 @@
 			baseConfigurationReference = A3BC615D6BBC9C4D6EBC5344 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 3V6U2AD8V4;
 				INFOPLIST_FILE = WLQRScan/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -560,6 +578,7 @@
 			baseConfigurationReference = 99C6D6F652AD3842A1B0C8B7 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 3V6U2AD8V4;
 				INFOPLIST_FILE = WLQRScan/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

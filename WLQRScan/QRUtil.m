@@ -2,8 +2,8 @@
 //  QRUtil.m
 //  WLQRScan
 //
-//  Created by wangguoliang on 16/1/13.
-//  Copyright © 2016年 wangguoliang. All rights reserved.
+//  Created by Json on 16/1/13.
+//  Copyright © 2016年 Json. All rights reserved.
 //
 
 #import "QRUtil.h"
@@ -20,6 +20,9 @@
  */
 + (NSString *)scQRReaderForImage:(UIImage *)qrImage
 {
+    if (qrImage == nil) {
+        return nil;
+    }
     ZXLuminanceSource *source = [[ZXCGImageLuminanceSource alloc] initWithCGImage:qrImage.CGImage];
     ZXBinaryBitmap *bitmap = [ZXBinaryBitmap binaryBitmapWithBinarizer:[ZXHybridBinarizer binarizerWithSource:source]];
     
@@ -35,6 +38,7 @@
     // result.rawBytes and result.length.
     return result.text;
 }
+
 /**
  *  从图片中读取二维码  这是iOS8以后的方法
  *
@@ -42,9 +46,11 @@
  *
  *  @return 二维码信息
  */
-
 + (NSString *)scQRReaderiOS8ForImage:(UIImage *)qrImage NS_AVAILABLE_IOS(8_0)
 {
+    if (qrImage == nil) {
+        return nil;
+    }
     UIImage *srcImage = qrImage;
     CIContext *context = [CIContext contextWithOptions:nil];
     CIDetector *detector = [CIDetector detectorOfType:CIDetectorTypeQRCode context:context options:@{CIDetectorAccuracy:CIDetectorAccuracyHigh}];
@@ -251,7 +257,8 @@
     return [UIImage imageWithCGImage:imageMasked];
     //  CGContextDrawImage(contextRef, CGRectMake(100, 50, 200, 80), [smallImg CGImage]);
 }
-+ (void)mdDrawQRCode:(QRcode *)code context:(CGContextRef)ctx size:(CGFloat)size fillColor:(UIColor *)fillColor {
++ (void)mdDrawQRCode:(QRcode *)code context:(CGContextRef)ctx size:(CGFloat)size fillColor:(UIColor *)fillColor
+{
     int margin = 0;
     unsigned char *data = code->data;
     int width = code->width;
@@ -278,5 +285,45 @@
         }
     }
     CGContextFillPath(ctx);
+}
+
++ (AVCaptureVideoOrientation)videoOrientationFromCurrentDeviceOrientation
+{
+    UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+    if (orientation == UIInterfaceOrientationPortrait) {
+        return AVCaptureVideoOrientationPortrait;
+    } else if (orientation == UIInterfaceOrientationLandscapeLeft) {
+        return AVCaptureVideoOrientationLandscapeLeft;
+    } else if (orientation == UIInterfaceOrientationLandscapeRight) {
+        return AVCaptureVideoOrientationLandscapeRight;
+    } else if (orientation == UIInterfaceOrientationPortraitUpsideDown) {
+        return AVCaptureVideoOrientationPortraitUpsideDown;
+    }
+    return AVCaptureVideoOrientationPortrait;
+}
+
++ (CGRect)screenBounds
+{
+    UIScreen *screen = [UIScreen mainScreen];
+    if (![screen respondsToSelector:@selector(fixedCoordinateSpace)] && UIInterfaceOrientationIsLandscape([UIApplication sharedApplication].statusBarOrientation)) {
+        return CGRectMake(0.0, 0.0, screen.bounds.size.height, screen.bounds.size.width);
+    }
+    return screen.bounds;
+}
+
++ (void)playBeep
+{
+    SystemSoundID soundID;
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"noticeMusic"ofType:@"wav"];
+    if (path) {
+        AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:path], &soundID);
+        //把需要销毁的音效文件的ID传递给它既可销毁
+        //AudioServicesDisposeSystemSoundID(soundID);
+        //下面的两个函数都可以用来播放音效文件，第一个函数伴随有震动效果
+        //AudioServicesPlayAlertSound(soundID);
+        AudioServicesPlaySystemSound(soundID);
+    }
+    // Vibrate  震动效果
+    AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
 }
 @end

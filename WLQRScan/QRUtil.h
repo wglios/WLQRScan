@@ -2,12 +2,13 @@
 //  QRUtil.h
 //  WLQRScan
 //
-//  Created by wangguoliang on 16/1/13.
-//  Copyright © 2016年 wangguoliang. All rights reserved.
+//  Created by Json on 16/1/13.
+//  Copyright © 2016年 Json. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 @interface QRUtil : NSObject
 
 /**
@@ -18,6 +19,7 @@
  *  @return 二维码信息
  */
 + (NSString *)scQRReaderForImage:(UIImage *)qrImage;
+
 /**
  *  从图片中读取二维码  这是iOS8以后的方法
  *
@@ -25,7 +27,6 @@
  *
  *  @return 二维码信息
  */
-
 + (NSString *)scQRReaderiOS8ForImage:(UIImage *)qrImage NS_AVAILABLE_IOS(8_0);
 
 /**
@@ -83,4 +84,9 @@
  */
 + (UIImage *)scQRCodeForString:(NSString *)qrString size:(CGFloat)imageSize fillColor:(UIColor *)fillColor backColor:(UIColor *)backColor subImage:(UIImage *)subImage;
 
++ (AVCaptureVideoOrientation)videoOrientationFromCurrentDeviceOrientation;
+
++ (CGRect)screenBounds;
+
++ (void)playBeep;
 @end
